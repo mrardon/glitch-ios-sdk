@@ -25,5 +25,5 @@
 // User-defined Configuration
 // Please define these!
 
-#define GCRedirectURI @"" // Example: "glitchiossdk://auth"
-#define GCAPIKey @"" // Example: @"84-9c7dec5325d7f12807928cde70c41d2c0aab3878"
+#define GCRedirectURI @"glitchiossdk://auth" // Example: "glitchiossdk://auth"
+#define GCAPIKey @"452-425c59d41d338b7eebcc6343116b4ca701e0fece" // Example: @"84-9c7dec5325d7f12807928cde70c41d2c0aab3878"
