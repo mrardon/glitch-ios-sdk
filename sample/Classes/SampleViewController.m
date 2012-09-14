@@ -49,6 +49,7 @@
             {
                 // Get the name of the player from the response
                 id player_name = [(NSDictionary*)result objectForKey:@"player_name"];
+                NSURL* avatar_url = [NSURL URLWithString: [(NSDictionary*)result objectForKey:@"avatar_url"]];
                 
                 // Ensure we've got a valid player name
                 if (player_name && [player_name isKindOfClass:[NSString class]])
@@ -56,8 +57,8 @@
                     // Initialize the player name label if it isn't already initialized
                     if (!_playerNameLabel)
                     {
-                        _playerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 200)];
-                        _playerNameLabel.textAlignment = UITextAlignmentCenter;
+                        _playerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 175, 200)];
+                        _playerNameLabel.textAlignment = UITextAlignmentLeft;
                         _playerNameLabel.font = [UIFont fontWithName:@"Open Sans" size:32.0f];
                         _playerNameLabel.alpha = 0.8f;
                         _playerNameLabel.backgroundColor = [UIColor clearColor];
@@ -68,8 +69,20 @@
                         [self.view addSubview:_playerNameLabel];
                     }
                     
+                    if (!_playerAvatarImageView)
+                    {
+                        CGRect screen = [[UIScreen mainScreen] applicationFrame];
+                        _playerAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(screen.size.width - 130, 0, 172, 248)];
+                        
+                        [self.view addSubview:_playerAvatarImageView];
+                        //[[UIImage alloc] initWithData: [NSData dataWithContentsOfURL:avatar_url]];
+                        //_playerAvatarImage.
+                    }
+                    
                     // Update the label text with our player name
                     _playerNameLabel.text = [NSString stringWithFormat:@"Hello, %@!",player_name];
+                    // Update the avatar with the users avatar
+                    _playerAvatarImageView.image = [[UIImage alloc] initWithData: [NSData dataWithContentsOfURL:avatar_url]];
                 } // end of if (player_name && [player_name isKindOfClass:[NSString class]])
             } // end of if (ok && [ok isKindOfClass:[NSNumber class]] && [(NSNumber*)ok boolValue])
             else

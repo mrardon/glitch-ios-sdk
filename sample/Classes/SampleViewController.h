@@ -28,6 +28,7 @@
 @interface SampleViewController : UIViewController <GCSessionDelegate, GCRequestDelegate> {
     Glitch * _glitch;
     UILabel * _playerNameLabel;
+    UIImageView * _playerAvatarImageView;
 }
 
 
